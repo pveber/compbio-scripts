@@ -1,0 +1,25 @@
+#!/bin/bash
+PACKAGE=$1
+VERSION=$2
+SCRIPTDIR=`pwd`/$1/$2
+
+
+msg() {
+    echo `date +[%H:%M]` $@
+}
+
+die() {
+    ECODE=$?
+    echo !!! Error \#${ECODE} !!!
+    echo -e "$1"
+    exit ${ECODE}
+}
+
+source build.config
+source ${SCRIPTDIR}/build.sh
+
+mkdir -p _build
+cd _build
+install
+
+
