@@ -1,7 +1,6 @@
 #!/bin/bash
 PACKAGE=$1
-VERSION=$2
-SCRIPTDIR=`pwd`/$1/$2
+SCRIPTDIR=`pwd`/$1
 
 
 msg() {
