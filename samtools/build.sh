@@ -1,4 +1,4 @@
-URL=http://sourceforge.net/projects/samtools/files/samtools/0.1.9/samtools-0.1.9.tar.bz2/download
+URL=http://sourceforge.net/projects/samtools/files/samtools/0.1.17/samtools-0.1.17.tar.bz2/download
 ARCHIVE=`basename ${URL%\/download}`
 PACKAGE=${ARCHIVE%\.tar.bz2}
 
