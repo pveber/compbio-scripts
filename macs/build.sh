@@ -1,4 +1,4 @@
-URL=http://macs:chipseq@liulab.dfci.harvard.edu/MACS/src/MACS-1.3.7.1.tar.gz
+URL=http://macs:chipseq@liulab.dfci.harvard.edu/MACS/src/MACS-1.4.1.tar.gz
 ARCHIVE=`basename ${URL}`
 PACKAGE=macs
 
