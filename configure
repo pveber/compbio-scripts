@@ -10,4 +10,5 @@ read -p "Prefix path for installation [${PREFIX}]: " ANSWER
 if [ "${ANSWER}" != "" ]; then PREFIX=${ANSWER}; fi
 echo "PREFIX=${PREFIX}" >> build.config
 echo "BINDIR=${PREFIX}/bin"   >> build.config
-echo "LIBDIR=${PREFIX}/lib64" >> build.config
+echo "LIBDIR=${PREFIX}/lib" >> build.config
+mkdir -p ${PREFIX}/bin ${PREFIX}/lib
