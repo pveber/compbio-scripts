@@ -12,18 +12,18 @@ install() {
 	BINDIR="${BINDIR}" \
 	SCRIPTS="${BINDIR}" \
 	MACHTYPE="${MACHTYPE}" \
-	MYSQLLIBS="${MYSQLLIBS}" \
+	MYSQLLIBS="${MYSQLLIBS} -lz" \
 	MYSQLINC="${MYSQLINC}"
     make -C kent/src/hg/genePredToGtf \
 	BINDIR="${BINDIR}" \
 	SCRIPTS="${BINDIR}" \
 	MACHTYPE="${MACHTYPE}" \
-	MYSQLLIBS="${MYSQLLIBS}" \
+	MYSQLLIBS="${MYSQLLIBS} -lz" \
 	MYSQLINC="${MYSQLINC}"
     make -C kent/src/hg/gpToGtf \
 	BINDIR="${BINDIR}" \
 	SCRIPTS="${BINDIR}" \
 	MACHTYPE="${MACHTYPE}" \
-	MYSQLLIBS="${MYSQLLIBS}" \
+	MYSQLLIBS="${MYSQLLIBS} -lz" \
 	MYSQLINC="${MYSQLINC}"
 }
