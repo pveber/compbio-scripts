@@ -1,4 +1,4 @@
-URL=http://meme.nbcr.net/downloads/meme_4.6.0.tar.gz
+URL=http://meme.nbcr.net/downloads/meme_4.8.1.tar.gz
 ARCHIVE=`basename ${URL}`
 PACKAGE=${ARCHIVE%\.tar.gz}
 
