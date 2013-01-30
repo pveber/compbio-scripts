@@ -1,4 +1,4 @@
-URL=http://sourceforge.net/projects/bowtie-bio/files/bowtie/0.12.8/bowtie-0.12.8-src.zip/download
+URL=http://sourceforge.net/projects/bowtie-bio/files/bowtie/0.12.9/bowtie-0.12.9-src.zip/download
 ARCHIVE=`basename ${URL%\/download}`
 PACKAGE=${ARCHIVE%\.tar.gz}
 

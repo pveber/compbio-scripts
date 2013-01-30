@@ -1,4 +1,4 @@
-URL=http://meme.nbcr.net/downloads/meme_4.8.1.tar.gz
+URL=ftp://ftp.ebi.edu.au/pub/software/MEME/r4.9.0/rc5/meme_4.9.0.tar.gz
 ARCHIVE=`basename ${URL}`
 PACKAGE=${ARCHIVE%\.tar.gz}
 
