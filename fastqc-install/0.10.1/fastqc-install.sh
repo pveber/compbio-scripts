@@ -36,6 +36,8 @@ cd FastQC
 mkdir -p ${PREFIX}/local/fastqc
 cp -r * ${PREFIX}/local/fastqc
 chmod 755 ${PREFIX}/local/fastqc/fastqc
+
+mkdir -p $PREFIX/bin
 ln -s ${PREFIX}/local/fastqc/fastqc ${PREFIX}/bin/fastqc
 
 rm -rf $TMP
