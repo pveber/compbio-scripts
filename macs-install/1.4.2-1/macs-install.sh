@@ -1,9 +1,9 @@
 #!/bin/bash
 
-## bedtools-install -- installation script for bedtools
+## macs-install -- installation script for macs
 ## 
 ## Usage:
-##   bedtools-install.sh PREFIX
+##   macs-install.sh PREFIX
 ##
 ## if it exists, PREFIX should be a directory
 ## Installation is performed in PREFIX/bin and PREFIX/src
@@ -23,9 +23,9 @@ fi
 
 # make PREFIX path absolute
 PREFIX=`readlink -f $PREFIX`
-URL=http://bedtools.googlecode.com/files/BEDTools.v2.11.2.tar.gz
+URL=https://github.com/downloads/taoliu/MACS/MACS-1.4.2-1.tar.gz
 ARCHIVE=`basename ${URL}`
-PACKAGE=${ARCHIVE%\.tar.gz}
+PACKAGE=macs
 
 die() {
     ECODE=$?
@@ -35,12 +35,10 @@ die() {
 
 mkdir -p $PREFIX/src
 cd $PREFIX/src
-wget -O ${ARCHIVE} ${URL} || die "failed to fetch ${PACKAGE}"
-tar xvfz ${ARCHIVE} || die "could not untargz ${ARCHIVE}"
+wget ${URL} || die "failed to fetch ${PACKAGE}"
+tar xvfz ${ARCHIVE}
 rm $ARCHIVE
-cd BEDTools-Version-2.11.2
-make
+cd ${ARCHIVE%-1\.tar.gz}
+python setup.py install --prefix ${PREFIX} || die "failed to install ${PACKAGE}"
 
-mkdir -p ${PREFIX}/bin
-cp bin/* ${PREFIX}/bin
-make clean
+

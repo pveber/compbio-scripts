@@ -28,6 +28,12 @@ ARCHIVE=`basename ${URL}`
 PACKAGE=${ARCHIVE%\.tar.gz}
 TMP=`mktemp -d`
 
+die() {
+    ECODE=$?
+    echo -e "$1 (\#${ECODE})"
+    exit ${ECODE}
+}
+
 cd $TMP
 wget ${URL} || die "failed to fetch ${PACKAGE}"
 tar xvfz ${ARCHIVE}

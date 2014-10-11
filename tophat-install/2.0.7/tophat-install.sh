@@ -8,6 +8,12 @@
 ## if it exists, PREFIX should be a directory
 ## Installation is performed in PREFIX/bin and PREFIX/src
 
+die() {
+    ECODE=$?
+    echo -e "$1 (\#${ECODE})"
+    exit ${ECODE}
+}
+
 if [ ! -n "$1" ]
 then
     grep "^##" $0
@@ -23,21 +29,19 @@ fi
 
 # make PREFIX path absolute
 PREFIX=`readlink -f $PREFIX`
-URL=http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit_0.0.13_binaries_Linux_2.6_amd64.tar.bz2
+
+URL=http://ccb.jhu.edu/software/tophat/downloads/tophat-2.0.7.Linux_x86_64.tar.gz
 ARCHIVE=`basename ${URL}`
-PACKAGE=${ARCHIVE%\.tar.bz2}
-
+PACKAGE=${ARCHIVE%\.tar.gz}
 TMP=`mktemp -d`
-
-die() {
-    ECODE=$?
-    echo -e "$1 (\#${ECODE})"
-    exit ${ECODE}
-}
 
 cd $TMP
 wget ${URL} || die "failed to fetch ${PACKAGE}"
-tar xvfj ${ARCHIVE}
+tar xvfz ${ARCHIVE}
+cd ${PACKAGE}
+rm README AUTHORS COPYING
+
 mkdir -p $PREFIX/bin
-cp bin/* ${PREFIX}/bin
+cp * ${PREFIX}/bin
+
 rm -rf $TMP

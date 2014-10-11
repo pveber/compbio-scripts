@@ -1,9 +1,9 @@
 #!/bin/bash
 
-## bedtools-install -- installation script for bedtools
+## meme-install -- installation script for meme
 ## 
 ## Usage:
-##   bedtools-install.sh PREFIX
+##   meme-install.sh PREFIX
 ##
 ## if it exists, PREFIX should be a directory
 ## Installation is performed in PREFIX/bin and PREFIX/src
@@ -23,7 +23,8 @@ fi
 
 # make PREFIX path absolute
 PREFIX=`readlink -f $PREFIX`
-URL=http://bedtools.googlecode.com/files/BEDTools.v2.11.2.tar.gz
+
+URL=ftp://ftp.ebi.edu.au/pub/software/MEME/4.9.1/meme_4.9.1.tar.gz
 ARCHIVE=`basename ${URL}`
 PACKAGE=${ARCHIVE%\.tar.gz}
 
@@ -35,12 +36,11 @@ die() {
 
 mkdir -p $PREFIX/src
 cd $PREFIX/src
-wget -O ${ARCHIVE} ${URL} || die "failed to fetch ${PACKAGE}"
-tar xvfz ${ARCHIVE} || die "could not untargz ${ARCHIVE}"
+wget ${URL} || die "failed to fetch ${PACKAGE}"
+tar xvfz ${ARCHIVE}
 rm $ARCHIVE
-cd BEDTools-Version-2.11.2
-make
-
-mkdir -p ${PREFIX}/bin
-cp bin/* ${PREFIX}/bin
+cd ${PACKAGE}
+./configure --prefix=${PREFIX} --with-url="http://meme.nbcr.net/meme" || die "${PACKAGE} configure failed"
+make || die "failed to build ${PACKAGE}"
+make install || die "failed to install ${PACKAGE}"
 make clean

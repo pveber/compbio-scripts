@@ -28,6 +28,12 @@ ARCHIVE=`basename ${URL}`
 PACKAGE=${ARCHIVE%\.zip}
 TMP=`mktemp -d`
 
+die() {
+    ECODE=$?
+    echo -e "$1 (\#${ECODE})"
+    exit ${ECODE}
+}
+
 cd $TMP
 wget -O ${ARCHIVE} ${URL} || die "failed to fetch ${PACKAGE}"
 unzip ${ARCHIVE} || die "could not unzip ${ARCHIVE}"
