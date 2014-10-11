@@ -1,12 +1,18 @@
 #!/bin/bash
 
-# bowtie-install -- installation script for bowtie
-# 
-# Usage:
-#   bowtie-install PREFIX
-#
-# if it exists, PREFIX should be a directory
-# Installation is performed in PREFIX/bin and PREFIX/src
+## bowtie-install -- installation script for bowtie
+## 
+## Usage:
+##   bowtie-install PREFIX
+##
+## if it exists, PREFIX should be a directory
+## Installation is performed in PREFIX/bin and PREFIX/src
+
+if [ ! -n "$1" ]
+then
+    grep "^##" $0
+    exit 1
+fi
 
 PREFIX=$1
 if [ -a $PREFIX ] && [ ! -d $PREFIX ]
