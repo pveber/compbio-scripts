@@ -3,13 +3,13 @@
 # Usage:
 #   bowtie-install PREFIX
 #
-# PREFIX should exist and be a directory
+# if it exists, PREFIX should be a directory
 # Installation is performed in PREFIX/bin and PREFIX/src
 
 PREFIX=$1
-if [ ! -d $PREFIX ]
+if [ -a $PREFIX ] && [ ! -d $PREFIX ]
 then
-    echo "Destination $PREFIX does not exist or isn't a directory."
+    echo "Destination $PREFIX exists and isn't a directory."
     exit 1
 fi
 
