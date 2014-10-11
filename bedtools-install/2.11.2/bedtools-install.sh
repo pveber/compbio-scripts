@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# bowtie-install -- installation script for bowtie
+# bedtools-install -- installation script for bedtools
 # 
 # Usage:
-#   bowtie-install PREFIX
+#   bedtools-install.sh PREFIX
 #
 # if it exists, PREFIX should be a directory
 # Installation is performed in PREFIX/bin and PREFIX/src
@@ -17,24 +17,18 @@ fi
 
 # make PREFIX path absolute
 PREFIX=`readlink -f $PREFIX`
-URL=http://sourceforge.net/projects/bowtie-bio/files/bowtie/0.12.9/bowtie-0.12.9-src.zip/download
-ARCHIVE=`basename ${URL%\/download}`
+URL=http://bedtools.googlecode.com/files/BEDTools.v2.11.2.tar.gz
+ARCHIVE=`basename ${URL}`
 PACKAGE=${ARCHIVE%\.tar.gz}
-
-die() {
-    ECODE=$?
-    echo -e "$1 (\#${ECODE})"
-    exit ${ECODE}
-}
 
 mkdir -p $PREFIX/src
 cd $PREFIX/src
 wget -O ${ARCHIVE} ${URL} || die "failed to fetch ${PACKAGE}"
-unzip ${ARCHIVE} || die "could not unzip ${ARCHIVE}"
-rm ${ARCHIVE}
-cd ${ARCHIVE%\-src.zip}
-make || die "failed to build ${PACKAGE}"
-mkdir -p ${PREFIX}/bin
-cp bowtie bowtie-build bowtie-inspect ${PREFIX}/bin
-make clean
+tar xvfz ${ARCHIVE} || die "could not untargz ${ARCHIVE}"
+rm $ARCHIVE
+cd BEDTools-Version-2.11.2
+make
 
+mkdir -p ${PREFIX}/bin
+cp bin/* ${PREFIX}/bin
+make clean
