@@ -1,9 +1,9 @@
 #!/bin/bash
 
-## cufflinks-install -- installation script for cufflinks
+## sra-toolkit-install -- installation script for cufflinks
 ## 
 ## Usage:
-##   cufflinks-install.sh PREFIX
+##   sra-toolkit-install.sh PREFIX
 ##
 ## if it exists, PREFIX should be a directory
 ## Installation is performed in PREFIX/bin and PREFIX/src

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-## cufflinks-install -- installation script for cufflinks
+## samtools-install -- installation script for cufflinks
 ## 
 ## Usage:
-##   cufflinks-install.sh PREFIX
+##   samtools-install.sh PREFIX
 ##
 ## if it exists, PREFIX should be a directory
 ## Installation is performed in PREFIX/bin and PREFIX/src
