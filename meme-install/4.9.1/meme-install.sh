@@ -40,7 +40,7 @@ wget ${URL} || die "failed to fetch ${PACKAGE}"
 tar xvfz ${ARCHIVE}
 rm $ARCHIVE
 cd ${PACKAGE}
-./configure --prefix=${PREFIX} --with-url="http://meme.nbcr.net/meme" || die "${PACKAGE} configure failed"
+./configure --prefix=${PREFIX} --with-url="http://meme.nbcr.net/meme" --enable-build-libxml2 --enable-build-libxslt || die "${PACKAGE} configure failed"
 make || die "failed to build ${PACKAGE}"
 make install || die "failed to install ${PACKAGE}"
 make clean
