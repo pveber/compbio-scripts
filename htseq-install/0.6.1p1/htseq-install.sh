@@ -40,7 +40,9 @@ tar xvfz ${ARCHIVE}
 rm $ARCHIVE
 cd ${ARCHIVE%\.tar.gz}
 PYTHONVERSION=`python --version 2>&1 |grep -o '[0-9]\.[0-9]'`
-PYTHONPATH=$PREFIX/lib/python${PYTHONVERSION}/site-packages:$PYTHONPATH
+PYTHONLIBDIR=$PREFIX/lib/python${PYTHONVERSION}/site-packages
+PYTHONPATH=$PYTHONLIBDIR:$PYTHONPATH
+mkdir -p $PYTHONLIBDIR
 python setup.py install --prefix ${PREFIX} || die "failed to install ${PACKAGE}"
 
 
