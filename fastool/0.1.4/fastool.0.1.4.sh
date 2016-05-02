@@ -11,7 +11,7 @@
 PKG=fastool
 VERSION=0.1.4
 
-set -e
+set -ue
 
 die() {
     ECODE=$?
